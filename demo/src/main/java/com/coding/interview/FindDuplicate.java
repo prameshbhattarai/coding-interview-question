@@ -1,6 +1,9 @@
-package com.example.demo;
+package com.coding.interview;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Given an array of integers where each value 1 <= x <= len(array), write a

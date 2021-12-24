@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.coding.interview;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -31,7 +31,6 @@ public class ZeroMatrixTest {
 
     @Test
     void testBruteForce() {
-
         boolean[][] arr = zeroMatrix.bruteForce(arr1);
         Assertions.assertTrue(Arrays.deepEquals(expected1, arr));
 

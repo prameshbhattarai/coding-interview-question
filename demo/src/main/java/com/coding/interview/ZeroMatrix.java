@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.coding.interview;
 
 /**
  * Given a boolean matrix, update it so that if any cell is true, all the cells in that
