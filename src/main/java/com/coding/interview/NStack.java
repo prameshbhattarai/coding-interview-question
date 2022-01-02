@@ -1,7 +1,5 @@
 package com.coding.interview;
 
-import java.util.Arrays;
-
 /**
  * Implement N > 0 stacks using a single array to store all stack data (you may
  * use auxiliary arrays in your stack object, but all of the objects in all of the stacks must
@@ -74,14 +72,14 @@ public class NStack {
         // extract the next free slot value into currentIndex
         int currentIndex = nextFreeIndex;
 
-        // update the next free slot from the pointer
+        // update the next free slot from the current value from pointer
         nextFreeIndex = pointer[currentIndex];
-
-        // update the top index of the stack
-        top[stack] = currentIndex;
 
         // update pointer by previous top index from stack
         pointer[currentIndex] = top[stack]; // backtracking of the stack, storing previous top
+
+        // update the top index of the stack
+        top[stack] = currentIndex;
 
         // insert the value into the array
         data[currentIndex] = value;
@@ -93,14 +91,14 @@ public class NStack {
         // find the top index of the stack
         int previousIndex = top[stack];
 
-        // change the next free index to current top index
-        nextFreeIndex = previousIndex;
-
-        // change the top index of the stack from pointer (backtracking)
+        // change the top index of the stack from pointer
         top[stack] = pointer[previousIndex];
 
         // change the pointer value by next free slot value
         pointer[previousIndex] = nextFreeIndex;
+
+        // change the next free index to previous index
+        nextFreeIndex = previousIndex;
 
         return data[previousIndex];
     }
