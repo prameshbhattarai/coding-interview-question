@@ -20,7 +20,7 @@ public class BuyAndSellStock {
 
     but this approach is inefficient, it will take Big O (n * n)
 
-    Efficient approach
+    Efficient approach: O(n)
     But we can do it in single iteration
     we will try to find the minimum value and find the max difference between currentValue - minimum value.
      */
