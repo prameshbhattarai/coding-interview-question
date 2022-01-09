@@ -58,10 +58,10 @@ public class PermutationsTest {
     @Test
     public void testArrayOfInteger() {
         List<int[]> results = permutations.permute(arr1);
-        Assertions.assertTrue(containsAll(expected1, results));
+        Assertions.assertTrue(Utils.containsAll(expected1, results));
 
         results = permutations.permute(arr2);
-        Assertions.assertTrue(containsAll(expected2, results));
+        Assertions.assertTrue(Utils.containsAll(expected2, results));
     }
 
     @Test
@@ -71,24 +71,6 @@ public class PermutationsTest {
 
         results = permutations.permute(s2);
         Assertions.assertEquals(ex2, results);
-    }
-
-    private boolean containsAll(List<int[]> expected, List<int[]> actual) {
-        if (expected.size() != actual.size()) return false;
-
-        Function<int[], Boolean> contains = (int[] array) -> {
-            for (int[] ints : actual) {
-                if (Arrays.equals(ints, array)) {
-                    return true;
-                }
-            }
-            return false;
-        };
-
-        for (int[] ints : expected) {
-            if (!contains.apply(ints)) return false;
-        }
-        return true;
     }
 
 }
