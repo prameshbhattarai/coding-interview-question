@@ -1,6 +1,7 @@
 package com.coding.interview;
 
 import java.util.Objects;
+import java.util.Stack;
 
 /**
  * You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
@@ -40,6 +41,45 @@ public class AddTwoNumbersII {
             ListNode listNode = (ListNode) o;
             return val == listNode.val && Objects.equals(next, listNode.next);
         }
+    }
+
+    public ListNode addTwoNumberUsingStack(ListNode l1, ListNode l2) {
+        Stack<Integer> stack1 = new Stack<>();
+        Stack<Integer> stack2 = new Stack<>();
+
+        while(l1 != null) {
+            stack1.push(l1.val);
+            l1 = l1.next;
+        }
+
+        while(l2 != null) {
+            stack2.push(l2.val);
+            l2 = l2.next;
+        }
+
+        ListNode prev = new ListNode(0);
+
+        int sum = 0;
+        while(!stack1.isEmpty() || !stack2.isEmpty()) {
+            sum = sum / 10;
+
+            if (!stack1.isEmpty()) {
+                sum = sum + stack1.pop();
+            }
+
+            if (!stack2.isEmpty()) {
+                sum = sum + stack2.pop();
+            }
+
+            prev.val = sum % 10;
+
+            ListNode head = new ListNode(sum / 10); // carry over
+            head.next = prev;
+
+            prev = head;
+        }
+
+        return prev.val == 0 ? prev.next : prev;
     }
 
     public ListNode addTwoNumber(ListNode l1, ListNode l2) {

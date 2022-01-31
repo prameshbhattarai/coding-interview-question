@@ -52,4 +52,13 @@ public class AddTwoNumbersIITest {
         Assertions.assertEquals(expectedResult2, actualResult);
     }
 
+    @Test
+    public void addNodeTest2() {
+        AddTwoNumbersII.ListNode actualResult = addTwoNumbersII.addTwoNumberUsingStack(l1, l2);
+        Assertions.assertEquals(expectedResult, actualResult);
+
+        actualResult = addTwoNumbersII.addTwoNumberUsingStack(l3, l4);
+        Assertions.assertEquals(expectedResult2, actualResult);
+    }
+
 }
