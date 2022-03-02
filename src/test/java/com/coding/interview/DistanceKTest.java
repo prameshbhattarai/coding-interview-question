@@ -11,15 +11,15 @@ public class DistanceKTest {
 
     private static final DistanceK.HashMapAndBFS HASH_MAP_AND_BFS = new DistanceK.HashMapAndBFS();
 
-    private final DistanceK.TreeNode n0 = new DistanceK.TreeNode(0);
-    private final DistanceK.TreeNode n8 = new DistanceK.TreeNode(8);
-    private final DistanceK.TreeNode n1 = new DistanceK.TreeNode(1, n0, n8);
-    private final DistanceK.TreeNode n6 = new DistanceK.TreeNode(6);
-    private final DistanceK.TreeNode n7 = new DistanceK.TreeNode(7);
-    private final DistanceK.TreeNode n4 = new DistanceK.TreeNode(4);
-    private final DistanceK.TreeNode n2 = new DistanceK.TreeNode(2, n7, n4);
-    private final DistanceK.TreeNode n5 = new DistanceK.TreeNode(5, n6, n2);
-    private final DistanceK.TreeNode n3 = new DistanceK.TreeNode(3, n5, n1);
+    private final TreeNode n0 = new TreeNode(0);
+    private final TreeNode n8 = new TreeNode(8);
+    private final TreeNode n1 = new TreeNode(1, n0, n8);
+    private final TreeNode n6 = new TreeNode(6);
+    private final TreeNode n7 = new TreeNode(7);
+    private final TreeNode n4 = new TreeNode(4);
+    private final TreeNode n2 = new TreeNode(2, n7, n4);
+    private final TreeNode n5 = new TreeNode(5, n6, n2);
+    private final TreeNode n3 = new TreeNode(3, n5, n1);
 
     @Test
     public void testUsingBFS() {
