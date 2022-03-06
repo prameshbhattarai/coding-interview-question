@@ -26,4 +26,13 @@ public class ConsecutiveArrayTest {
         len = consecutiveArray.consecutive(arr2);
         Assertions.assertEquals(1, len);
     }
+
+    @Test
+    void testUnionFind() {
+        int len = consecutiveArray.unionFind(arr1);
+        Assertions.assertEquals(3, len);
+
+        len = consecutiveArray.unionFind(arr2);
+        Assertions.assertEquals(1, len);
+    }
 }

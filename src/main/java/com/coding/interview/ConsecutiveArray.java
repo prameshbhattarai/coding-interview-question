@@ -1,8 +1,6 @@
 package com.coding.interview;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Given an unsorted array, find the length of the longest sequence of
@@ -51,5 +49,86 @@ public class ConsecutiveArray {
 
         return maxConsecutiveArray;
 
+    }
+
+    /*
+    Approach:
+    Merge consecutive array to single Set
+    and return the Set with max number of elements
+     */
+    public int unionFind(int[] arr) {
+        UnionFind unionFind = new UnionFind(arr.length);
+
+        // value index map
+        Map<Integer, Integer> lookup = new HashMap<>();
+
+        for (int i =0; i < arr.length; i++) {
+            if (lookup.containsKey(arr[i])) continue;
+            lookup.put(arr[i], i);
+
+            if (lookup.containsKey(arr[i] + 1)) {
+                // if we have next consecutive number
+                // then merge both into single set
+                unionFind.union(i, lookup.get(arr[i] + 1));
+            }
+
+            if (lookup.containsKey(arr[i] - 1)) {
+                // if we have prev consecutive number
+                // then merge both into single set
+                unionFind.union(i, lookup.get(arr[i] - 1));
+            }
+        }
+
+        return unionFind.maxUnion();
+    }
+
+    private static class UnionFind {
+        private final int[] parent;
+
+        UnionFind(int n) {
+            this.parent = new int[n];
+            // initialize parent for all index
+            // initially parent of index will be index
+            for (int i = 0; i < n; i++) {
+                parent[i] = i;
+            }
+        }
+
+        /*
+        find parent of i
+         */
+        public int find(int i) {
+            // find parent of provided index
+            if (parent[i] != i) {
+                return find(parent[i]);
+            }
+            return i;
+        }
+
+        /*
+        merge two index, i and j
+        assign parent of j to i
+
+        i.e. grouping i and j to same set
+         */
+        public void union(int i, int j) {
+            int parentOfI = find(i);
+            int parentOfJ = find(j);
+            parent[parentOfI] = parentOfJ;
+        }
+
+        /*
+        find the set with max number of elements
+         */
+        public int maxUnion() {
+            int[] count = new int[parent.length];
+            int max = 1;
+            for (int i = 0; i < parent.length; i++) {
+                int par = find(parent[i]);
+                count[par]++;
+                max = Math.max(max, count[par]);
+            }
+            return max;
+        }
     }
 }
