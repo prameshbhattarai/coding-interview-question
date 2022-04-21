@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class TreeNode {
     public final int val;
-    public final TreeNode left;
-    public final TreeNode right;
+    public TreeNode left;
+    public TreeNode right;
 
     public TreeNode(int x) {
         this(x, null, null);
