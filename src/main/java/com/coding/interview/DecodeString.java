@@ -1,6 +1,8 @@
 package com.coding.interview;
 
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -77,6 +79,41 @@ public class DecodeString {
             }
         }
 
+        return result.toString();
+    }
+    
+    public String recursiveDecode(String text) {
+        Queue<Character> queue = new LinkedList<>();
+        // insert all the text in the queue
+        for(char c : text.toCharArray()) queue.offer(c);
+        return recursive(queue);
+    }
+    
+    // decode the single block at a time
+    private String recursive(Queue<Character> queue) {
+        StringBuilder result = new StringBuilder();
+        int freq = 0;
+        while (!queue.isEmpty()) {
+            char c = queue.poll();
+            // we might have double digit freq
+            // for eg: 12[a].. which means decoded string should have 12 a
+            if (Character.isDigit(c)) {
+                freq = freq * 10 + c - '0';
+            } else if (c == '[') {
+                // new decoding started..
+                // recursive call to the function
+                String sub = recursive(queue);
+                for (int i = 0; i < freq; i++) {
+                    result.append(sub);
+                }
+                // reset the frequency
+                freq = 0;
+            } else if (c == ']') {
+                break;
+            } else {
+                result.append(c);
+            }
+        }
         return result.toString();
     }
 }

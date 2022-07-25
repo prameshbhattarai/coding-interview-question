@@ -13,4 +13,11 @@ public class DecodeStringTest {
         Assertions.assertEquals("accaccacc", decodeString.decode("3[a2[c]]"));
         Assertions.assertEquals("abcabccdcdcdef", decodeString.decode("2[abc]3[cd]ef"));
     }
+    
+    @Test
+    public void testRecursiveDecode() {
+        Assertions.assertEquals("aaabcbc", decodeString.recursiveDecode("3[a]2[bc]"));
+        Assertions.assertEquals("accaccacc", decodeString.recursiveDecode("3[a2[c]]"));
+        Assertions.assertEquals("abcabccdcdcdef", decodeString.recursiveDecode("2[abc]3[cd]ef"));
+    }
 }
