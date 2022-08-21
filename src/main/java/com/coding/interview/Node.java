@@ -4,8 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Node<T> {
+
     private final T value;
     private List<Node<T>> children;
+
+    public Node() {
+        this.value = null;
+    }
 
     public Node(T value) {
         this.value = value;
@@ -23,5 +28,13 @@ public class Node<T> {
 
     public List<Node<T>> getChildren() {
         return children;
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "value=" + value +
+                ", children=" + children +
+                '}';
     }
 }
